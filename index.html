@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
+     
+    <link rel="stylesheet" href="style.css">
+    
+    <title>Document</title>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+    crossorigin=""></script>
+    
+</head>
+<body>
+    
+    <div id="map" style="height: 80vh;"></div>
+    
+    <script>
+        var map = L.map('map').setView([52.18686501805276, 21.571748926464988], 10);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+var marker = L.marker([52.18686501805276, 21.571748926464988]).addTo(map);
+var polygon = L.polygon([
+    [52.18718828237485, 21.571500524231467],
+    [52.18707481734291, 21.57215095986342],
+    [52.18694217026935, 21.572088938954376],
+    [52.18698454054397, 21.571840673921802],
+    [52.186715426417706, 21.571713410565412],
+    [52.186757286908104, 21.57147254134622],
+    [52.187025651179695, 21.571599275130556],
+    [52.18705360639029, 21.571441024811858],
+    [52.187191005780925, 21.5715009904666]
+]).addTo(map);
+
+    </script>
+</body>
+</html>
