@@ -22,11 +22,11 @@
 <button onclick="getLocation()">SPRAWDZ LOKALIZACJĘ</button>
 
 <p id="demo"></p>
-    <div id="map" style="height: 90vh;"></div>
+    <div id="map" style="height: 90vh;"></div> 
     
     <script>
-        var map = L.map('map').setView([52.18686501805276, 21.571748926464988], 10);
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        var map = L.map('map').setView([52.18686501805276, 21.571748926464988], 12); //tworzy mape
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { //otwiera mapę
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
@@ -53,23 +53,24 @@
 var x = document.getElementById("demo");
 function getLocation() {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
+    navigator.geolocation.getCurrentPosition(showPosition); //odczytuje aktualną lokalizacje 
   } else {
-    x.innerHTML = "Geolocation is not supported by this browser.";
+    x.innerHTML = "Geolocation is not supported by this browser."; //error jeśli przeglądarka nie obsługuje Geolocation
   }
+  
 }
 
 function showPosition(position) {
-  x.innerHTML = "Latitude: " + position.coords.latitude +
-  "<br>Longitude: " + position.coords.longitude;
-
-  var marker = L.marker([position.coords.latitude,position.coords.longitude]).addTo(map);
-  var circle = L.circle([position.coords.latitude,position.coords.longitude],{
-    color: 'red',
-    fillColor: '#f03',
-    fillOpacity: 0.5,
-    radius: 60
+  x.innerHTML = "Latitude: " + position.coords.latitude + //szerokość geograficzna
+  "<br>Longitude: " + position.coords.longitude; //długość geograficzna
+  var marker = L.marker([position.coords.latitude,position.coords.longitude]).addTo(map); //pokazuje aktualną lokalizację użytkownika
+  var circle = L.circle([position.coords.latitude,position.coords.longitude],{ //koło w około aktualnej lokalizacji użytkownika
+    color: 'red', //kolor obrysu koła
+    fillColor: '#f03', //kolor środka koła
+    fillOpacity: 0.5, //przezroczystość
+    radius: 60 //promień koła
 }).addTo(map);
+  
 }
     
 
