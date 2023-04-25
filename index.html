@@ -63,6 +63,7 @@ function getLocation() {
 function showPosition(position) {
   x.innerHTML = "Latitude: " + position.coords.latitude + //szerokość geograficzna
   "<br>Longitude: " + position.coords.longitude; //długość geograficzna
+  map.setView([position.coords.latitude,position.coords.longitude],16)
   var marker = L.marker([position.coords.latitude,position.coords.longitude]).addTo(map); //pokazuje aktualną lokalizację użytkownika
   var circle = L.circle([position.coords.latitude,position.coords.longitude],{ //koło w około aktualnej lokalizacji użytkownika
     color: 'red', //kolor obrysu koła
